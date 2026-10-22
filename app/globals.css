@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/* ───────────────────────────── Design tokens ───────────────────────────── */
+@theme {
+  /* Color */
+  --color-ink: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #161616;
+  --color-fg: #f5f5f5;
+  --color-muted: #a1a1a1;
+  --color-gold: #c9a96e;
+  --color-gold-soft: #e2cc9f;
+  --color-cool: #7da6c8;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.16);
+
+  /* Typography (font variables are injected by next/font in the locale layout) */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.75rem, 1.6rem + 5.2vw, 6.25rem);
+  --text-hero--line-height: 1.02;
+  --text-hero--letter-spacing: -0.02em;
+  --text-display: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: -0.015em;
+  --text-title: clamp(1.5rem, 1.25rem + 1vw, 2.125rem);
+  --text-title--line-height: 1.2;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.65;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.14em;
+  /* Smallest text (tags, counts, hints) */
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1rem;
+
+  /* Spacing */
+  --spacing-section: clamp(5rem, 3.5rem + 7vw, 9.5rem);
+  --spacing-gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+
+  /* Layout */
+  --container-site: 76rem;
+  --container-prose: 42rem;
+
+  /* Radius */
+  --radius-card: 1.25rem; /* cards, panels, media */
+  --radius-control: 0.75rem; /* inputs, chips, small tiles */
+
+  /* Motion */
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Effects */
+  --shadow-glow: 0 0 0 1px rgb(201 169 110 / 0.35), 0 18px 60px -18px rgb(201 169 110 / 0.35);
+  --shadow-glow-sm: 0 0 24px -6px rgb(201 169 110 / 0.45);
+}
+
+/*
+ * Arabic: a Naskh display face over a sans body mirrors the Latin serif/sans pairing.
+ * Small labels use the Arabic sans (the mono face has no Arabic glyphs) and are set larger,
+ * since Arabic at 11–12px is hard to read. Never letter-space Arabic (it breaks joining).
+ */
+:root[dir="rtl"] {
+  --font-display: var(--font-arabic-display), var(--font-cormorant), serif;
+  --font-sans: var(--font-arabic), var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-arabic), var(--font-jetbrains), ui-monospace, sans-serif;
+
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.25rem;
+  --text-micro: 0.8125rem;
+  --text-micro--line-height: 1.25rem;
+
+  --text-hero: clamp(2.25rem, 1.2rem + 3.9vw, 4.75rem);
+  --text-hero--line-height: 1.25;
+  --text-hero--letter-spacing: 0;
+  --text-display: clamp(1.875rem, 1.4rem + 2.1vw, 3.25rem);
+  --text-display--line-height: 1.35;
+  --text-display--letter-spacing: 0;
+  --text-title--line-height: 1.45;
+  --text-label--letter-spacing: 0;
+  --text-lead--line-height: 1.85;
+}
+
+/* ───────────────────────────── Base ───────────────────────────── */
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-ink);
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-fg);
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  :root[dir="rtl"] :is(h1, h2, h3, h4) {
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgb(201 169 110 / 0.3);
+    color: var(--color-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* ───────────────────────────── Utilities ───────────────────────────── */
+
+/* Faint film grain over the whole page */
+@utility bg-noise {
+  position: relative;
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Thin technical grid, faded at the edges */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+@utility text-gold-gradient {
+  background: linear-gradient(100deg, #e9d5aa 0%, #c9a96e 45%, #a8884f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Hairline that fades out at both ends */
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(201 169 110 / 0.45), transparent);
+}
+
+/* Glass, used sparingly (navbar, small chips) */
+@utility glass {
+  background: rgb(17 17 17 / 0.6);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* Mirror directional icons (arrows) in RTL */
+@utility flip-rtl {
+  :root[dir="rtl"] & {
+    transform: scaleX(-1);
+  }
+}
+
+/* ───────────────────────────── Motion (CSS-only, runs before hydration) ───────────────────────────── */
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.9s var(--ease-luxe) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.9s var(--ease-luxe) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@utility animate-page-in {
+  animation: page-in 0.55s var(--ease-luxe) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

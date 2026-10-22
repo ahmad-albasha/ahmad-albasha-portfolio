@@ -1,0 +1,36 @@
+import {
+  siArduino,
+  siDocker,
+  siFastapi,
+  siFirebase,
+  siFlutter,
+  siHuggingface,
+  siLangchain,
+  siNextdotjs,
+  siPostgresql,
+  siPython,
+  siPytorch,
+  siReact,
+  siScikitlearn,
+  siTailwindcss,
+  siTypescript,
+} from "simple-icons";
+
+/** Technologies shown in the trust strip. Icons come from simple-icons (https://simpleicons.org). */
+export const techStack = [
+  siPython,
+  siPytorch,
+  siScikitlearn,
+  siLangchain,
+  siHuggingface,
+  siFastapi,
+  siNextdotjs,
+  siReact,
+  siTypescript,
+  siTailwindcss,
+  siFlutter,
+  siFirebase,
+  siPostgresql,
+  siDocker,
+  siArduino,
+].map(({ title, path }) => ({ name: title, path }));

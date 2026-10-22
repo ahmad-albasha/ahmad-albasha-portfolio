@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "siteTitle": "Ahmad Albasha — AI-focused Software Engineer",
+    "siteDescription": "I build AI systems, websites and mobile apps from idea to launch for businesses in the Gulf and Europe. Book a free discovery call.",
+    "projectsTitle": "Projects",
+    "projectsDescription": "Selected work across AI systems, web development, mobile apps and hardware.",
+    "servicesTitle": "Services",
+    "servicesDescription": "AI systems, web development, mobile apps and custom software — scoped clearly and delivered end to end.",
+    "aboutTitle": "About",
+    "aboutDescription": "Ahmad Albasha is an AI-focused software engineer building products for clients in the Gulf and Europe.",
+    "bookTitle": "Book a Free Call",
+    "bookDescription": "Book a free 30-minute discovery call to talk through your project.",
+    "blogTitle": "Blog",
+    "blogDescription": "Notes on building AI products, web and mobile apps."
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Home",
+    "projects": "Projects",
+    "services": "Services",
+    "about": "About",
+    "blog": "Blog",
+    "book": "Book a Free Call",
+    "bookShort": "Book a Call",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skip": "Skip to content",
+    "language": "Language",
+    "switchTo": "العربية"
+  },
+  "hero": {
+    "eyebrow": "AI-focused Software Engineer",
+    "line1": "I build AI systems,",
+    "line2": "websites & mobile apps",
+    "line3": "from idea to launch.",
+    "subtitle": "For businesses and product teams in the Gulf and Europe who want software that works on day one — and keeps working.",
+    "primaryCta": "Book a Free Call",
+    "secondaryCta": "View Projects",
+    "availability": "Taking on new projects",
+    "note": "Free 30-minute call · No obligation"
+  },
+  "trust": {
+    "stackLabel": "Built with",
+    "statsLabel": "Key figures"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What I can build for you",
+    "intro": "One engineer from strategy to shipping — so nothing gets lost between the designer, the developer and the AI specialist.",
+    "explore": "Explore all services",
+    "deliverables": "What you get",
+    "idealFor": "Ideal for",
+    "timeline": "Typical timeline",
+    "stack": "Tools",
+    "discuss": "Discuss this service"
+  },
+  "projects": {
+    "eyebrow": "Selected Work",
+    "title": "Projects that shipped",
+    "intro": "From Arabic AI systems to luxury mobile apps — real products for real users.",
+    "viewAll": "View all projects",
+    "viewCase": "Read case study",
+    "visit": "Visit site",
+    "filterLabel": "Filter projects by category",
+    "filters": {
+      "all": "All",
+      "ai": "AI",
+      "web": "Web",
+      "mobile": "Mobile",
+      "hardware": "Hardware"
+    },
+    "tiers": {
+      "featured": "Featured",
+      "secondary": "Client work",
+      "more": "More work"
+    },
+    "empty": "No projects in this category yet.",
+    "pageTitle": "Work",
+    "pageIntro": "A selection of AI systems, websites, mobile apps and hardware projects. Featured projects include a full case study."
+  },
+  "projectDetail": {
+    "back": "All projects",
+    "role": "Role",
+    "year": "Year",
+    "category": "Category",
+    "problem": "The problem",
+    "solution": "The solution",
+    "result": "The result",
+    "highlights": "Highlights",
+    "tech": "Tech stack",
+    "media": "Gallery",
+    "live": "Visit live site",
+    "next": "Next project",
+    "ctaTitle": "Have a similar project in mind?",
+    "ctaBody": "Tell me what you're building. I'll reply within one business day."
+  },
+  "process": {
+    "eyebrow": "How I Work",
+    "title": "A simple process, no surprises",
+    "intro": "You always know what's being built, when it ships and what it costs."
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What clients say"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Engineer first. Partner always.",
+    "body": "I'm Ahmad, a software engineer focused on AI. I've built retrieval systems for Arabic texts, medical prediction tools, luxury mobile apps and robotics prototypes. I work directly with founders and teams — clear communication, honest timelines and software that's built to last.",
+    "more": "More about me",
+    "pageTitle": "Hi, I'm Ahmad.",
+    "pageLead": "An AI-focused software engineer who turns ideas into working products — AI systems, websites and mobile apps.",
+    "story1": "I started out building hardware and robotics projects, which taught me to think about the whole system: not just the code, but the people using it and the environment it runs in.",
+    "story2": "Today I focus on AI — retrieval-augmented systems, machine-learning models and LLM-powered features — and on the web and mobile products that put them in users' hands. I'm fluent in Arabic and English, so I build bilingual, right-to-left products properly from the start.",
+    "story3": "Clients work with me directly. No account managers, no hand-offs: one person who understands both the business goal and the technical detail.",
+    "valuesTitle": "What you can expect",
+    "values": {
+      "clarityTitle": "Clarity",
+      "clarity": "Fixed scope, written milestones and weekly progress you can see.",
+      "qualityTitle": "Craft",
+      "quality": "Fast, accessible, well-tested software — the details are the product.",
+      "ownershipTitle": "Ownership",
+      "ownership": "I treat your product like my own and stay around after launch."
+    },
+    "skillsTitle": "Core skills",
+    "certifications": {
+      "title": "Licenses & certifications",
+      "intro": "Courses and programmes I've completed, with links to verify each one with the issuer.",
+      "view": "View certificate",
+      "verify": "Verify",
+      "viewCertificate": "View certificate: {title}"
+    }
+  },
+  "cta": {
+    "eyebrow": "Let's talk",
+    "title": "Have an idea? Let's turn it into a product.",
+    "body": "Book a free 30-minute call. We'll talk through your goals and I'll tell you honestly how I'd approach it — and whether I'm the right fit.",
+    "primary": "Book a Free Call",
+    "orReach": "Prefer a message?"
+  },
+  "channels": {
+    "whatsapp": "WhatsApp",
+    "whatsappHint": "Fastest reply",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "github": "GitHub"
+  },
+  "form": {
+    "title": "Tell me about your project",
+    "intro": "Takes one minute. It helps me prepare so our call is actually useful.",
+    "name": "Name",
+    "email": "Email",
+    "projectType": "Project type",
+    "budget": "Budget range",
+    "message": "Project details",
+    "messagePlaceholder": "What are you building, and what does success look like?",
+    "select": "Select…",
+    "projectTypes": {
+      "ai": "AI system",
+      "web": "Website / web app",
+      "mobile": "Mobile app",
+      "custom": "Custom software",
+      "other": "Not sure yet"
+    },
+    "budgets": {
+      "lt5k": "Under $5k",
+      "5to15k": "$5k – $15k",
+      "15to40k": "$15k – $40k",
+      "gt40k": "$40k+",
+      "unsure": "Not sure yet"
+    },
+    "submit": "Send details",
+    "sending": "Sending…",
+    "success": "Thanks — I've received your details and will reply within one business day.",
+    "error": "Something went wrong. Please try again or reach me on WhatsApp.",
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email.",
+      "projectType": "Please choose a project type.",
+      "budget": "Please choose a budget range.",
+      "message": "Please add a few words about your project (at least 10 characters)."
+    },
+    "privacy": "Your details are only used to reply to you."
+  },
+  "book": {
+    "eyebrow": "Book a Call",
+    "title": "Book your free discovery call",
+    "intro": "30 minutes, no obligation. Pick a time that suits you — optionally share a few details first so I can come prepared.",
+    "expect": "What to expect",
+    "expect1": "We discuss your goals, users and constraints",
+    "expect2": "I share how I'd approach it, honestly",
+    "expect3": "You receive a written proposal within 48 hours",
+    "calendarTitle": "Choose a time",
+    "calendarLoading": "Loading calendar…",
+    "notConfigured": "The booking calendar isn't connected yet. Message me on WhatsApp or email and I'll send you a time.",
+    "prefilled": "Thanks — your details will be attached to the booking.",
+    "optional": "Optional",
+    "skipToCalendar": "Skip to the calendar"
+  },
+  "blog": {
+    "title": "Blog",
+    "intro": "Notes on building AI products, websites and mobile apps.",
+    "back": "All posts",
+    "read": "Read post"
+  },
+  "footer": {
+    "tagline": "AI systems, websites & mobile apps — from idea to launch.",
+    "rights": "All rights reserved.",
+    "navTitle": "Navigate",
+    "contactTitle": "Contact"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
+  }
+}
