@@ -319,7 +319,7 @@ export const projects: Project[] = [
     categories: ["web"],
     accent: "gold",
     liveUrl: "https://mikeandkals.com",
-    image: "/projects/mikeandkals-home.png",
+    image: "/projects/mikeandkals-hero.png",
     tagline: {
       en: "A luxury website for Mike & Kals, a ladies' hair and beauty salon in Dubai",
       ar: "موقع فاخر لصالون Mike & Kals للشعر والتجميل النسائي في دبي",
