@@ -126,6 +126,10 @@
       "ownership": "I treat your product like my own and stay around after launch."
     },
     "skillsTitle": "Core skills",
+    "education": {
+      "title": "Education",
+      "intro": "From architecture and building technology to computer science — the degrees behind the work."
+    },
     "certifications": {
       "title": "Licenses & certifications",
       "intro": "Courses and programmes I've completed, with links to verify each one with the issuer.",

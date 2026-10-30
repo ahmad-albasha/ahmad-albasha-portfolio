@@ -3,13 +3,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Tag } from "@/components/ui/Tag";
 import type { Certification } from "@/data/certifications";
-import { localizeDigits } from "@/lib/i18n";
-
-function issuedLabel(issued: string, locale: string) {
-  const [year, month] = issued.split("-").map(Number);
-  const text = new Intl.DateTimeFormat(locale === "ar" ? "ar" : "en", { month: "short", year: "numeric" }).format(new Date(year, month - 1));
-  return localizeDigits(text, locale);
-}
+import { monthYear } from "@/lib/i18n";
 
 /** Certificate preview, issuer, date and links to the full file and the issuer's verification page. */
 export function CertificationCard({ certification: c }: { certification: Certification }) {
@@ -39,7 +33,7 @@ export function CertificationCard({ certification: c }: { certification: Certifi
       <div className="flex flex-1 flex-col p-6">
         <p className="font-mono text-label uppercase text-muted">
           <span dir="ltr">{c.issuer}</span>
-          {c.issued && <> · {issuedLabel(c.issued, locale)}</>}
+          {c.issued && <> · {monthYear(c.issued, locale)}</>}
         </p>
         <h3 dir="ltr" className="mt-3 text-start font-display text-xl leading-snug rtl:text-end">
           {c.title}

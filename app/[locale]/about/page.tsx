@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CertificationCard } from "@/components/about/CertificationCard";
+import { EducationTimeline } from "@/components/about/EducationTimeline";
 import { Portrait } from "@/components/about/Portrait";
 import { FinalCta } from "@/components/home/FinalCta";
 import { SvgPathIcon } from "@/components/icons/BrandIcons";
@@ -10,6 +11,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Section";
 import { certifications } from "@/data/certifications";
+import { education } from "@/data/education";
 import { gallery } from "@/data/gallery";
 import { site } from "@/data/site";
 import { techStack } from "@/data/stack";
@@ -76,7 +78,19 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </Container>
       </section>
 
-      <section aria-labelledby="skills-title" className="py-section">
+      <section id="education" aria-labelledby="education-title" className="py-section">
+        <Container>
+          <Reveal>
+            <h2 id="education-title" className="text-display">
+              {t("education.title")}
+            </h2>
+            <p className="mt-5 max-w-2xl text-lead">{t("education.intro")}</p>
+          </Reveal>
+          <EducationTimeline items={education} />
+        </Container>
+      </section>
+
+      <section aria-labelledby="skills-title" className="border-t border-line py-section">
         <Container>
           <Reveal>
             <h2 id="skills-title" className="text-display">
