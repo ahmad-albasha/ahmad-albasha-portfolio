@@ -11,7 +11,9 @@
     "bookTitle": "Book a Free Call",
     "bookDescription": "Book a free 30-minute discovery call to talk through your project.",
     "blogTitle": "Blog",
-    "blogDescription": "Notes on building AI products, web and mobile apps."
+    "blogDescription": "Notes on building AI products, web and mobile apps.",
+    "galleryTitle": "Gallery",
+    "galleryDescription": "Honors, talks, trainings and student activities — moments from Ahmad Albasha's journey."
   },
   "nav": {
     "label": "Main",
@@ -19,6 +21,7 @@
     "projects": "Projects",
     "services": "Services",
     "about": "About",
+    "gallery": "Gallery",
     "blog": "Blog",
     "book": "Book a Free Call",
     "bookShort": "Book a Call",
@@ -130,6 +133,33 @@
       "verify": "Verify",
       "viewCertificate": "View certificate: {title}"
     }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "pageTitle": "Moments along the way",
+    "pageIntro": "Honors, talks, trainings and the student activities I've taken part in and helped organise.",
+    "filterLabel": "Filter photos by category",
+    "filters": {
+      "all": "All",
+      "honors": "Honors",
+      "talks": "Talks & panels",
+      "workshops": "Trainings",
+      "activities": "Activities"
+    },
+    "alt": {
+      "honors": "Ahmad Albasha at an honoring ceremony",
+      "talks": "Ahmad Albasha speaking at an event",
+      "workshops": "Ahmad Albasha at a training workshop",
+      "activities": "Ahmad Albasha with students at a campus activity"
+    },
+    "open": "Open photo {n} of {total}",
+    "close": "Close",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "counter": "{n} / {total}",
+    "teaserTitle": "Beyond the code",
+    "teaserIntro": "Honors, talks and student activities I've been part of.",
+    "teaserLink": "Open the gallery"
   },
   "cta": {
     "eyebrow": "Let's talk",

@@ -1,4 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CertificationCard } from "@/components/about/CertificationCard";
 import { Portrait } from "@/components/about/Portrait";
@@ -8,8 +10,10 @@ import { Container } from "@/components/ui/Container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Section";
 import { certifications } from "@/data/certifications";
+import { gallery } from "@/data/gallery";
 import { site } from "@/data/site";
 import { techStack } from "@/data/stack";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { stepNumber } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -24,6 +28,8 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const locale = (await params).locale as Locale;
   setRequestLocale(locale);
   const t = await getTranslations("about");
+  const tg = await getTranslations("gallery");
+  const galleryTeaser = ["06", "46", "70", "63", "49"].map((n) => gallery.find((p) => p.src.endsWith(`activity-${n}.jpg`))!);
 
   const values = [
     { title: t("values.clarityTitle"), body: t("values.clarity") },
@@ -86,6 +92,41 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
               >
                 <SvgPathIcon path={tech.path} className="size-4 shrink-0 text-gold" />
                 {tech.name}
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </section>
+
+      <section aria-labelledby="gallery-title" className="border-t border-line py-section">
+        <Container>
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <h2 id="gallery-title" className="text-display">
+                {tg("teaserTitle")}
+              </h2>
+              <p className="mt-5 max-w-2xl text-lead">{tg("teaserIntro")}</p>
+            </div>
+            <Link href="/gallery" className="inline-flex items-center gap-1.5 text-sm text-gold hover:underline">
+              {tg("teaserLink")}
+              <ArrowUpRight aria-hidden className="flip-rtl size-4" />
+            </Link>
+          </Reveal>
+          <Stagger as="ul" className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            {galleryTeaser.map((photo, i) => (
+              <StaggerItem as="li" key={photo.src} className={i === 0 ? "col-span-2 row-span-2" : undefined}>
+                <Link
+                  href="/gallery"
+                  className="group relative block aspect-square h-full overflow-hidden rounded-control border border-line bg-surface-2 transition-all duration-500 ease-luxe hover:border-gold/40 hover:shadow-glow"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={tg(`alt.${photo.category}`)}
+                    fill
+                    sizes={i === 0 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
+                    className="object-cover transition-transform duration-[900ms] ease-luxe group-hover:scale-[1.05]"
+                  />
+                </Link>
               </StaggerItem>
             ))}
           </Stagger>

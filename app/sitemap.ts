@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects",
     "/services",
     "/about",
+    "/gallery",
     "/book",
     ...featuredProjects.map((p) => `/projects/${p.slug}`),
     ...(site.features.blog ? ["/blog", ...posts.map((p) => `/blog/${p.slug}`)] : []),
