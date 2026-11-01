@@ -82,6 +82,13 @@ export const certifications: Certification[] = [
 
   /* ─────────────── Networking & security ─────────────── */
   {
+    title: "Workshop: How to Land Your First Cybersecurity Job",
+    issuer: "Semicolon Security",
+    issued: "2026-01",
+    skills: ["Cybersecurity", "Career Development"],
+    image: "/certificates/semicolon-first-cybersecurity-job.jpg",
+  },
+  {
     title: "CCNA: Switching, Routing, and Wireless Essentials",
     issuer: "Cisco",
     issued: "2024-08",
