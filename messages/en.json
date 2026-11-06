@@ -79,7 +79,13 @@
     },
     "empty": "No projects in this category yet.",
     "pageTitle": "Work",
-    "pageIntro": "A selection of AI systems, websites, mobile apps and hardware projects. Featured projects include a full case study."
+    "pageIntro": "A selection of AI systems, websites, mobile apps and hardware projects. Featured projects include a full case study.",
+    "meta": {
+      "year": "Year",
+      "role": "Role",
+      "discipline": "Discipline",
+      "stack": "Built with"
+    }
   },
   "projectDetail": {
     "back": "All projects",

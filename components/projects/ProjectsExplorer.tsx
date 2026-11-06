@@ -87,11 +87,11 @@ export function ProjectsExplorer() {
 
       {featured.length > 0 && (
         <Tier title={t("tiers.featured")} count={featured.length}>
-          <ul className="grid gap-6 lg:grid-cols-2">
+          <ul className="grid gap-x-10 gap-y-20 lg:grid-cols-2">
             <AnimatePresence initial={false}>
               {featured.map((project, i) => (
-                <AnimatedItem key={project.slug}>
-                  <FeaturedProjectCard project={project} priority={i < 2} />
+                <AnimatedItem key={project.slug} className={cn(i === 0 && "lg:col-span-2", i > 0 && i % 2 === 0 && "lg:mt-24")}>
+                  <FeaturedProjectCard project={project} priority={i < 2} index={i} large={i === 0} />
                 </AnimatedItem>
               ))}
             </AnimatePresence>

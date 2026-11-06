@@ -14,7 +14,7 @@ export async function Testimonials() {
       <Stagger as="ul" className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((item) => (
           <StaggerItem as="li" key={item.name}>
-            <figure className="flex h-full flex-col rounded-card border border-line bg-surface p-8">
+            <figure className="flex h-full flex-col rounded-card border border-line surface-card p-8">
               <span aria-hidden className="font-display text-5xl leading-none text-gold">
                 &ldquo;
               </span>

@@ -57,7 +57,7 @@ export default async function ServicesPage({ params }: PageProps<"/[locale]/serv
                   </dl>
                 </div>
 
-                <div className="flex flex-col gap-8 rounded-card border border-line bg-surface p-7 md:p-9">
+                <div className="flex flex-col gap-8 rounded-card border border-line surface-card p-7 md:p-9">
                   <div>
                     <h3 className="font-mono text-label uppercase text-gold">{t("deliverables")}</h3>
                     <ul className="mt-5 flex flex-col gap-3.5">

@@ -12,7 +12,7 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-line">
+    <footer className="relative overflow-hidden border-t border-line bg-espresso/40">
       <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1.4fr]">
         <div className="flex flex-col gap-5">
           <Logo />
@@ -37,6 +37,15 @@ export async function Footer() {
           <h2 className="mb-4 font-mono text-label uppercase text-gold">{t("contactTitle")}</h2>
           <ContactChannels />
         </div>
+      </Container>
+      {/* Signature wordmark, cropped by the page edge */}
+      <Container className="max-w-wide">
+        <p
+          aria-hidden
+          className="pointer-events-none -mb-[0.18em] bg-[linear-gradient(180deg,rgb(232_225_213/0.14),rgb(232_225_213/0.02))] bg-clip-text text-center font-display text-[clamp(3.5rem,0.5rem+13vw,15rem)] leading-none font-light tracking-[-0.04em] whitespace-nowrap text-transparent select-none"
+        >
+          {site.name[locale]}
+        </p>
       </Container>
       <Container className="flex flex-col justify-between gap-2 border-t border-line py-6 text-xs sm:flex-row">
         <p>

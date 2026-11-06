@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/home/FinalCta";
 import { SvgPathIcon } from "@/components/icons/BrandIcons";
 import { Container } from "@/components/ui/Container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { Eyebrow } from "@/components/ui/Section";
+import { EditorialTitle, Eyebrow } from "@/components/ui/Section";
 import { certifications } from "@/data/certifications";
 import { education } from "@/data/education";
 import { gallery } from "@/data/gallery";
@@ -42,11 +42,16 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   return (
     <>
       <section className="relative isolate overflow-hidden pt-36 pb-section md:pt-44">
-        <div aria-hidden className="absolute -top-32 end-0 -z-10 size-[32rem] rounded-full bg-gold/[0.05] blur-[120px]" />
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <div className="column-guides absolute inset-0 hidden md:block" />
+          <div className="light-pool -top-32 end-0 size-[32rem] bg-gold/[0.06]" />
+        </div>
         <Container className="grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
           <div className="animate-fade-up">
             <Eyebrow>{t("eyebrow")}</Eyebrow>
-            <h1 className="mt-6 text-hero">{t("pageTitle")}</h1>
+            <h1 className="mt-8 text-mega font-light">
+              <EditorialTitle text={t("pageTitle")} />
+            </h1>
             <p className="mt-8 text-lead text-fg/90">{t("pageLead")}</p>
             <div className="mt-10 flex flex-col gap-6 leading-relaxed">
               <p>{t("story1")}</p>
@@ -55,7 +60,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             </div>
             <p className="mt-10 font-mono text-label uppercase text-muted">{site.location[locale]}</p>
           </div>
-          <Portrait alt={site.name[locale]} priority className="animate-fade-up mx-auto w-full max-w-sm [--delay:200ms] lg:sticky lg:top-28 lg:max-w-none lg:self-start" />
+          <Portrait alt={site.name[locale]} priority shape="arch" className="animate-fade-up mx-auto w-full max-w-sm [--delay:200ms] lg:sticky lg:top-28 lg:max-w-none lg:self-start" />
         </Container>
       </section>
 
@@ -68,7 +73,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           </Reveal>
           <Stagger as="ul" className="mt-12 grid gap-6 md:grid-cols-3">
             {values.map((v, i) => (
-              <StaggerItem as="li" key={v.title} className="rounded-card border border-line bg-surface p-8">
+              <StaggerItem as="li" key={v.title} className="rounded-card border border-line surface-card p-8">
                 <span className="font-mono text-label text-gold">{stepNumber(i, locale)}</span>
                 <h3 className="mt-6 text-title">{v.title}</h3>
                 <p className="mt-3 leading-relaxed">{v.body}</p>

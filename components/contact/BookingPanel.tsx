@@ -48,7 +48,7 @@ export function BookingPanel({ calLink, contactFallback }: { calLink: string; co
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start">
-      <section aria-labelledby="qualify-title" className="rounded-card border border-line bg-surface p-6 md:p-9">
+      <section aria-labelledby="qualify-title" className="rounded-card border border-line surface-card p-6 md:p-9">
         <StepHeading id="qualify-title" step={1} title={form("title")} note={t("optional")} />
         <p className="mt-3 mb-8 text-sm">{form("intro")}</p>
         <ContactForm onSuccess={setLead} />
@@ -64,7 +64,7 @@ export function BookingPanel({ calLink, contactFallback }: { calLink: string; co
       <section
         aria-labelledby="calendar-title"
         id="calendar"
-        className={cn("scroll-mt-24 overflow-hidden rounded-card border border-line bg-surface", calLink && "lg:sticky lg:top-24")}
+        className={cn("scroll-mt-24 overflow-hidden rounded-card border border-line surface-card", calLink && "lg:sticky lg:top-24")}
       >
         <div className="border-b border-line p-6 md:px-9">
           <StepHeading id="calendar-title" step={2} title={t("calendarTitle")} />

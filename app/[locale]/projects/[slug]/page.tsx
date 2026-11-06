@@ -117,7 +117,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
 
           <aside className="flex flex-col gap-10 lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-card border border-line bg-surface p-7">
+            <div className="rounded-card border border-line surface-card p-7">
               <h2 className="font-mono text-label uppercase text-gold">{t("highlights")}</h2>
               <ul className="mt-5 flex flex-col gap-3 text-sm">
                 {project.highlights[locale].map((h) => (
@@ -150,7 +150,7 @@ export default async function ProjectPage({ params }: Props) {
               {project.media.map((item) => (
                 <li key={item.src}>
                   <figure>
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-line bg-surface">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-line surface-card">
                       <Image src={item.src} alt={item.alt[locale]} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                     </div>
                     {item.caption && <figcaption className="mt-3 text-sm text-muted">{item.caption[locale]}</figcaption>}
