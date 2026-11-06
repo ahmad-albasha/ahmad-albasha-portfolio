@@ -14,7 +14,7 @@ import { pageMetadata } from "@/lib/seo";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
@@ -38,7 +38,7 @@ const arabicDisplay = Noto_Naskh_Arabic({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#100f0d",
   colorScheme: "dark",
 };
 
@@ -76,6 +76,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       className={cn(display.variable, sans.variable, mono.variable, locale === "ar" && arabic.variable, locale === "ar" && arabicDisplay.variable)}
     >
       <body className="bg-noise">
+        <div aria-hidden className="atmosphere" />
         <a
           href="#main"
           className="sr-only z-[60] rounded-full bg-gold px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:start-4 focus:top-4"

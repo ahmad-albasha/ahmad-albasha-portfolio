@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function GlobalNotFound() {
   return (
     <html lang="en" dir="ltr">
-      <body style={{ background: "#0a0a0a", color: "#f5f5f5", fontFamily: "system-ui, sans-serif", display: "grid", placeItems: "center", minHeight: "100vh", margin: 0 }}>
+      <body style={{ background: "#100f0d", color: "#e8e1d5", fontFamily: "system-ui, sans-serif", display: "grid", placeItems: "center", minHeight: "100vh", margin: 0 }}>
         <main style={{ textAlign: "center" }}>
           <h1 style={{ fontWeight: 500 }}>Page not found</h1>
           <Link href="/" style={{ color: "#c9a96e" }}>

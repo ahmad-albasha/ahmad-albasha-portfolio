@@ -63,12 +63,18 @@ export function Navbar() {
                   href={href}
                   aria-current={isActive(href) ? "page" : undefined}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-sm transition-colors duration-300 hover:text-fg",
+                    "group relative rounded-full px-4 py-2 text-sm transition-colors duration-300 hover:text-fg",
                     isActive(href) ? "text-fg" : "text-muted",
                   )}
                 >
                   {t(key)}
-                  {isActive(href) && <span aria-hidden className="absolute inset-x-4 -bottom-0.5 h-px bg-gold/70" />}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "absolute inset-x-4 -bottom-0.5 h-px origin-left bg-gold/70 transition-transform duration-500 ease-luxe rtl:origin-right",
+                      isActive(href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                    )}
+                  />
                 </Link>
               </li>
             ))}
@@ -121,9 +127,12 @@ export function Navbar() {
                       href={href}
                       onClick={close}
                       aria-current={pathname === href || (href !== "/" && isActive(href)) ? "page" : undefined}
-                      className="flex items-center justify-between py-5 font-display text-3xl text-fg aria-[current=page]:text-gold"
+                      className="flex items-baseline gap-5 py-5 font-display text-4xl font-light text-fg aria-[current=page]:text-gold"
                     >
-                      {t(key)}
+                      <span aria-hidden className="font-mono text-micro text-gold/70">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex-1">{t(key)}</span>
                       <ArrowRight aria-hidden className="flip-rtl size-5 text-muted" />
                     </Link>
                   </m.li>

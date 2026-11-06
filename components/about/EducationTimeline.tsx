@@ -20,7 +20,7 @@ export function EducationTimeline({ items }: { items: Education[] }) {
           >
             <GraduationCap className="size-4" strokeWidth={1.5} />
           </span>
-          <Reveal className="rounded-card border border-line bg-surface p-6 transition-all duration-500 ease-luxe hover:border-gold/30 hover:shadow-glow md:p-8">
+          <Reveal className="rounded-card border border-line surface-card p-6 transition-all duration-500 ease-luxe hover:border-gold/30 hover:shadow-glow md:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="font-mono text-label uppercase text-muted">
                 {monthYear(e.start, locale)} – {monthYear(e.end, locale)}

@@ -2,17 +2,25 @@
 
 /* ───────────────────────────── Design tokens ───────────────────────────── */
 @theme {
-  /* Color */
-  --color-ink: #0a0a0a;
-  --color-surface: #111111;
-  --color-surface-2: #161616;
-  --color-fg: #f5f5f5;
-  --color-muted: #a1a1a1;
-  --color-gold: #c9a96e;
+  /*
+   * Color — Luxury editorial × AI.
+   * ~70% obsidian/espresso surfaces · ~15% gold + ivory · ~10% emerald (AI) · ~5% dusty blue (tech labels).
+   */
+  --color-ink: #100f0d; /* Obsidian — page background */
+  --color-surface: #1b1915; /* Dark espresso — cards, panels */
+  --color-surface-2: #221f1a; /* Raised espresso — media wells, hover */
+  --color-fg: #e8e1d5; /* Warm ivory — primary text (14.7:1 on ink) */
+  --color-muted: #ada597; /* Warm stone — secondary text (7.9:1 on ink) */
+  --color-gold: #c9a96e; /* Champagne gold — brand accent, primary actions */
   --color-gold-soft: #e2cc9f;
-  --color-cool: #7da6c8;
-  --color-line: rgb(255 255 255 / 0.08);
-  --color-line-strong: rgb(255 255 255 / 0.16);
+  --color-emerald: #527d70; /* Muted emerald — AI accents, fills, borders, dots */
+  --color-emerald-soft: #7fa697; /* Emerald for small text (7.1:1 on ink) */
+  --color-emerald-deep: #13201c; /* Background tint */
+  --color-forest: #14251f; /* Deep forest — ambient light pools */
+  --color-espresso: #1b1915;
+  --color-cool: #7589b5; /* Dusty blue — technical labels (5.5:1 on ink) */
+  --color-line: rgb(232 225 213 / 0.08);
+  --color-line-strong: rgb(232 225 213 / 0.16);
 
   /* Typography (font variables are injected by next/font in the locale layout) */
   --font-display: var(--font-cormorant), Georgia, serif;
@@ -23,6 +31,14 @@
   --text-hero: clamp(2.75rem, 1.6rem + 5.2vw, 6.25rem);
   --text-hero--line-height: 1.02;
   --text-hero--letter-spacing: -0.02em;
+  /* Signature scale: the home hero headline and the closing chapter */
+  --text-mega: clamp(3.1rem, 0.9rem + 7.6vw, 9rem);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.035em;
+  /* Chapter titles — larger and lighter than ordinary display */
+  --text-chapter: clamp(2.6rem, 1.4rem + 4.4vw, 5.75rem);
+  --text-chapter--line-height: 0.98;
+  --text-chapter--letter-spacing: -0.028em;
   --text-display: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
   --text-display--line-height: 1.08;
   --text-display--letter-spacing: -0.015em;
@@ -43,6 +59,7 @@
 
   /* Layout */
   --container-site: 76rem;
+  --container-wide: 92rem;
   --container-prose: 42rem;
 
   /* Radius */
@@ -53,8 +70,11 @@
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Effects */
-  --shadow-glow: 0 0 0 1px rgb(201 169 110 / 0.35), 0 18px 60px -18px rgb(201 169 110 / 0.35);
-  --shadow-glow-sm: 0 0 24px -6px rgb(201 169 110 / 0.45);
+  /* Resting card: faint top highlight + soft drop. Hover: hairline gold edge + deeper drop, no neon bloom. */
+  --shadow-card: inset 0 1px 0 0 rgb(232 225 213 / 0.04), 0 24px 48px -32px rgb(0 0 0 / 0.75);
+  --shadow-glow: inset 0 1px 0 0 rgb(232 225 213 / 0.06), 0 0 0 1px rgb(201 169 110 / 0.22), 0 32px 64px -32px rgb(0 0 0 / 0.85),
+    0 20px 56px -36px rgb(201 169 110 / 0.28);
+  --shadow-glow-sm: 0 0 20px -6px rgb(201 169 110 / 0.4);
 }
 
 /*
@@ -72,6 +92,12 @@
   --text-micro: 0.8125rem;
   --text-micro--line-height: 1.25rem;
 
+  --text-mega: clamp(2.4rem, 0.9rem + 5.4vw, 6.25rem);
+  --text-mega--line-height: 1.3;
+  --text-mega--letter-spacing: 0;
+  --text-chapter: clamp(2.1rem, 1.2rem + 3.2vw, 4.25rem);
+  --text-chapter--line-height: 1.3;
+  --text-chapter--letter-spacing: 0;
   --text-hero: clamp(2.25rem, 1.2rem + 3.9vw, 4.75rem);
   --text-hero--line-height: 1.25;
   --text-hero--letter-spacing: 0;
@@ -94,10 +120,12 @@
 
   body {
     min-height: 100dvh;
+    overflow-x: clip;
     background: var(--color-ink);
     color: var(--color-muted);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -159,8 +187,8 @@
 /* Thin technical grid, faded at the edges */
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgb(232 225 213 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(232 225 213 / 0.04) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
 }
@@ -178,9 +206,37 @@
   background: linear-gradient(90deg, transparent, rgb(201 169 110 / 0.45), transparent);
 }
 
+/* Espresso card: a barely-there top sheen over the surface, a hairline edge and a soft resting shadow */
+@utility surface-card {
+  background:
+    linear-gradient(180deg, rgb(232 225 213 / 0.028), transparent 45%),
+    var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+/*
+ * Section depth. Each is a single, very low-contrast wash so neighbouring sections read as
+ * different "rooms" without visible banding. Light sources sit mid-section and fade out well before the
+ * edges, so stacked sections never show a seam.
+ */
+@utility bg-depth-emerald {
+  background:
+    radial-gradient(ellipse 55% 50% at 90% 40%, rgb(82 125 112 / 0.1), transparent 70%),
+    radial-gradient(ellipse 45% 45% at 5% 60%, rgb(82 125 112 / 0.06), transparent 70%),
+    linear-gradient(180deg, transparent, rgb(27 25 21 / 0.45) 30%, rgb(27 25 21 / 0.45) 70%, transparent);
+}
+
+@utility bg-depth-warm {
+  background: radial-gradient(ellipse 50% 50% at 0% 50%, rgb(201 169 110 / 0.055), transparent 70%);
+}
+
+@utility bg-depth-cool {
+  background: radial-gradient(ellipse 50% 50% at 100% 50%, rgb(117 137 181 / 0.05), transparent 70%);
+}
+
 /* Glass, used sparingly (navbar, small chips) */
 @utility glass {
-  background: rgb(17 17 17 / 0.6);
+  background: rgb(16 15 13 / 0.72);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
@@ -190,6 +246,170 @@
   :root[dir="rtl"] & {
     transform: scaleX(-1);
   }
+}
+
+/* ───────────────────────────── Digital Architect — signature layer ───────────────────────────── */
+
+/*
+ * The page "environment": one fixed layer of light behind everything. Emerald pools from the upper
+ * left, a warm champagne bloom high on the right, deep forest settling at the bottom and a vignette
+ * that keeps the edges in shadow. Sections then add their own local light on top of it.
+ */
+@utility atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 45% at 8% -5%, rgb(82 125 112 / 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 92% 0%, rgb(201 169 110 / 0.07), transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgb(20 37 31 / 0.85), transparent 70%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgb(0 0 0 / 0.55));
+}
+
+/* Architectural column guides: twelve hairlines that fade in and out vertically */
+@utility column-guides {
+  background-image: linear-gradient(to right, rgb(232 225 213 / 0.045) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 70%, transparent);
+}
+
+/* Editorial italic accent inside a serif headline */
+@utility accent-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+  :root[dir="rtl"] & {
+    font-style: normal;
+  }
+}
+
+/* Outlined serif numerals for chapter and step indices */
+@utility numeral-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(201 169 110 / 0.55);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.8;
+}
+
+/* A soft circular light. Size and colour come from the element; this only shapes it. */
+@utility light-pool {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+/* Dark product stage used behind screenshots */
+@utility stage {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 0%, rgb(var(--stage-a, 201 169 110) / 0.18), transparent 65%),
+    radial-gradient(ellipse 60% 60% at 100% 100%, rgb(var(--stage-b, 82 125 112) / 0.16), transparent 70%),
+    linear-gradient(180deg, #1d1b17, #12110f);
+}
+
+/* Link underline that draws in from the reading start */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.6s var(--ease-luxe);
+  :root[dir="rtl"] & {
+    background-position: 100% 100%;
+  }
+  &:hover,
+  .group:hover & {
+    background-size: 100% 1px;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rtl {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 48s linear infinite;
+  :root[dir="rtl"] & {
+    animation-name: marquee-rtl;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 140s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@utility animate-pulse-ring {
+  animation: pulse-ring 4.5s var(--ease-luxe) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@utility animate-scroll-cue {
+  animation: scroll-cue 2.8s var(--ease-luxe) infinite;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: var(--len, 1200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-draw {
+  stroke-dasharray: var(--len, 1200);
+  animation: draw 2.6s var(--ease-luxe) both;
+  animation-delay: var(--delay, 0ms);
 }
 
 /* ───────────────────────────── Motion (CSS-only, runs before hydration) ───────────────────────────── */

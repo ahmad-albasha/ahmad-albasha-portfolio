@@ -17,8 +17,8 @@ export function GET() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          background: "radial-gradient(ellipse 60% 70% at 85% 10%, rgba(201,169,110,0.25), transparent 70%), #0a0a0a",
-          color: "#f5f5f5",
+          background: "radial-gradient(ellipse 60% 70% at 85% 10%, rgba(201,169,110,0.25), transparent 70%), #100f0d",
+          color: "#e8e1d5",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
@@ -37,7 +37,7 @@ export function GET() {
           >
             AA
           </div>
-          <div style={{ fontSize: 28, color: "#a1a1a1", letterSpacing: 4, textTransform: "uppercase" }}>{site.role.en}</div>
+          <div style={{ fontSize: 28, color: "#ada597", letterSpacing: 4, textTransform: "uppercase" }}>{site.role.en}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div style={{ fontSize: 88, lineHeight: 1.05, letterSpacing: -2 }}>{site.name.en}</div>

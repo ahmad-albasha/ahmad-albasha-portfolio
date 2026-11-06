@@ -12,7 +12,7 @@ export function CertificationCard({ certification: c }: { certification: Certifi
   const full = c.file ?? c.image;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-surface transition-all duration-500 ease-luxe hover:-translate-y-1 hover:border-gold/30 hover:shadow-glow">
+    <article className="group flex h-full flex-col overflow-hidden rounded-card border border-line surface-card transition-all duration-500 ease-luxe hover:-translate-y-1 hover:border-gold/30 hover:shadow-glow">
       <div className="relative aspect-[4/3] overflow-hidden border-b border-line bg-surface-2">
         {c.image ? (
           <a href={full} target="_blank" rel="noopener noreferrer" aria-label={t("viewCertificate", { title: c.title })} className="absolute inset-0">
