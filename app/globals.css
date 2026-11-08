@@ -294,6 +294,28 @@
   line-height: 0.8;
 }
 
+/*
+ * Oversized chapter numerals for project and section anchors: a champagne outline whose upper half
+ * is softly filled with light, fading to pure outline toward the baseline.
+ */
+@utility numeral-chapter {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(201 169 110 / 0.72);
+  background-image: linear-gradient(180deg, rgb(226 204 159 / 0.34), rgb(201 169 110 / 0.08) 50%, transparent 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  :root[dir="rtl"] & {
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+}
+
 /* A soft circular light. Size and colour come from the element; this only shapes it. */
 @utility light-pool {
   position: absolute;
@@ -409,6 +431,38 @@
 @utility animate-draw {
   stroke-dasharray: var(--len, 1200);
   animation: draw 2.6s var(--ease-luxe) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* A short segment of light travelling along an SVG path. Give the path pathLength="1". */
+@keyframes signal-flow {
+  from {
+    stroke-dashoffset: 0.18;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+@utility animate-signal {
+  stroke-dasharray: 0.18 1;
+  animation: signal-flow var(--dur, 4.2s) var(--ease-luxe) infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* A slow breathing glow for ambient light sources */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@utility animate-breathe {
+  animation: breathe 7s ease-in-out infinite;
   animation-delay: var(--delay, 0ms);
 }
 

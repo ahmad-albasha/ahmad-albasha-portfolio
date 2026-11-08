@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { ServiceIcon } from "@/data/services";
 import { cn } from "@/lib/cn";
 
@@ -26,11 +27,15 @@ export function ServiceGlyph({ name, className }: { name: ServiceIcon; className
           ),
         )}
         <polyline points="30,100 100,75 170,130" stroke="var(--color-gold)" strokeWidth="1.25" />
+        {/* Inference: light travelling through the network along the lit path, and a second, fainter route */}
+        <polyline points="30,100 100,75 170,130" pathLength={1} stroke="var(--color-gold-soft)" strokeWidth="2.5" strokeLinecap="round" className="animate-signal" />
+        <polyline points="30,40 100,125 170,70" pathLength={1} stroke="var(--color-emerald-soft)" strokeWidth="1.75" strokeLinecap="round" className="animate-signal [--delay:2.1s] [--dur:5.2s]" />
         {layers.flatMap((col, li) =>
           col.map((y) => <circle key={`${li}-${y}`} cx={xs[li]} cy={y} r={li === 1 ? 4 : 5} fill="var(--color-ink)" stroke="currentColor" strokeWidth="1" />),
         )}
         <circle cx="100" cy="75" r="4" fill="var(--color-gold)" />
-        <circle cx="100" cy="100" r="92" stroke="currentColor" strokeOpacity="0.12" strokeDasharray="2 5" />
+        <circle cx="100" cy="75" r="11" stroke="var(--color-gold)" strokeOpacity="0.5" className="animate-pulse-ring" />
+        <circle cx="100" cy="100" r="92" stroke="currentColor" strokeOpacity="0.16" strokeDasharray="2 5" className="animate-spin-slow" />
       </svg>
     );
   }
@@ -87,6 +92,19 @@ export function ServiceGlyph({ name, className }: { name: ServiceIcon; className
       {traces.map((d) => (
         <path key={d} d={d} stroke="currentColor" strokeOpacity="0.45" strokeWidth="0.9" />
       ))}
+      {/* Signals leaving the core along alternate traces, staggered */}
+      {traces.filter((_, i) => i % 2 === 0).map((d, i) => (
+        <path
+          key={`signal-${d}`}
+          d={d}
+          pathLength={1}
+          stroke="var(--color-gold-soft)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          className="animate-signal"
+          style={{ "--delay": `${i * 900}ms`, "--dur": "3.6s" } as CSSProperties}
+        />
+      ))}
       {[
         [40, 50],
         [20, 100],
@@ -99,6 +117,7 @@ export function ServiceGlyph({ name, className }: { name: ServiceIcon; className
       ].map(([x, y]) => (
         <circle key={`${x}-${y}`} cx={x} cy={y} r="3.5" fill="var(--color-ink)" stroke="currentColor" strokeWidth="1" />
       ))}
+      <rect x="58" y="58" width="84" height="84" rx="12" fill="var(--color-gold)" fillOpacity="0.08" className="animate-breathe" />
       <rect x="70" y="70" width="60" height="60" rx="6" stroke="var(--color-gold)" strokeWidth="1.2" fill="var(--color-ink)" />
       <rect x="84" y="84" width="32" height="32" rx="3" stroke="currentColor" strokeOpacity="0.5" strokeWidth="0.75" />
       <circle cx="100" cy="100" r="4" fill="var(--color-gold)" />

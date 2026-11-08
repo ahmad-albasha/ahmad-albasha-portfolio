@@ -54,9 +54,9 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             </h1>
             <p className="mt-8 text-lead text-fg/90">{t("pageLead")}</p>
             <div className="mt-10 flex flex-col gap-6 leading-relaxed">
-              <p>{t("story1")}</p>
-              <p>{t("story2")}</p>
-              <p>{t("story3")}</p>
+              {(["story1", "story2", "story3", "story4", "story5"] as const).map((key) => (
+                <p key={key}>{t(key)}</p>
+              ))}
             </div>
             <p className="mt-10 font-mono text-label uppercase text-muted">{site.location[locale]}</p>
           </div>

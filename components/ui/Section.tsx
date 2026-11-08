@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { DrawRule, MaskText } from "./Cinematic";
 import { Container } from "./Container";
 import { Reveal } from "./Reveal";
 
@@ -9,6 +10,7 @@ export function Section({
   className,
   labelledBy,
   wide = false,
+  scene,
 }: {
   id?: string;
   children: ReactNode;
@@ -16,9 +18,11 @@ export function Section({
   labelledBy?: string;
   /** Uses the wider editorial container (for sections with asymmetric layouts). */
   wide?: boolean;
+  /** The ambient light environment the page cross-fades to while this section is in view (see SceneLight). */
+  scene?: "warm" | "cool" | "emerald" | "dusk";
 }) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={cn("relative py-section", className)}>
+    <section id={id} aria-labelledby={labelledBy} data-scene={scene} className={cn("relative py-section", className)}>
       <Container className={wide ? "max-w-wide" : undefined}>{children}</Container>
     </section>
   );
@@ -81,40 +85,46 @@ export function SectionHeading({
 }) {
   if (align === "center") {
     return (
-      <Reveal className="mb-14 flex flex-col items-center text-center md:mb-20">
-        <Eyebrow>{eyebrow}</Eyebrow>
+      <div className="mb-14 flex flex-col items-center text-center md:mb-20">
+        <Reveal>
+          <Eyebrow>{eyebrow}</Eyebrow>
+        </Reveal>
         <h2 id={id} className="mt-6 max-w-4xl text-chapter font-light">
-          <EditorialTitle text={title} accent={accent} />
+          <MaskText text={title} accent={accent} />
         </h2>
-        {intro && <p className="mt-6 max-w-xl text-lead">{intro}</p>}
-      </Reveal>
+        {intro && (
+          <Reveal delay={0.3}>
+            <p className="mt-6 max-w-xl text-lead">{intro}</p>
+          </Reveal>
+        )}
+      </div>
     );
   }
 
   return (
-    <Reveal className="mb-14 grid gap-y-6 md:mb-20 lg:grid-cols-12 lg:gap-x-8">
-      <div className="flex items-center gap-5 lg:col-span-3 lg:flex-col lg:items-start lg:gap-6 lg:pt-3">
+    <div className="mb-16 grid gap-y-6 md:mb-24 lg:grid-cols-12 lg:gap-x-8">
+      <Reveal className="flex items-center gap-5 lg:col-span-3 lg:flex-col lg:items-start lg:gap-6 lg:pt-3">
         {index && (
           <span aria-hidden className="numeral-outline text-[3.25rem] lg:text-[5.5rem]">
             {index}
           </span>
         )}
         <p className="flex items-center gap-3 font-mono text-label uppercase text-gold">
-          <span aria-hidden className="h-px w-6 bg-gold/60" />
+          <DrawRule className="h-px w-6 bg-gold/60" delay={0.2} />
           {eyebrow}
         </p>
-      </div>
+      </Reveal>
       <div className="lg:col-span-9">
         <h2 id={id} className="max-w-[14ch] text-chapter font-light rtl:max-w-[18ch]">
-          <EditorialTitle text={title} accent={accent} />
+          <MaskText text={title} accent={accent} delay={0.1} />
         </h2>
         {(intro || action) && (
-          <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between lg:mt-10">
+          <Reveal delay={0.35} className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between lg:mt-10">
             {intro && <p className="max-w-md text-lead md:ms-[8%]">{intro}</p>}
             {action && <div className="hidden shrink-0 md:block">{action}</div>}
-          </div>
+          </Reveal>
         )}
       </div>
-    </Reveal>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { ContactChannels } from "@/components/contact/ContactChannels";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { EditorialTitle } from "@/components/ui/Section";
+import { MaskText } from "@/components/ui/Cinematic";
 import { site } from "@/data/site";
 
 const ARCS = [120, 200, 280, 360, 440, 520];
@@ -52,7 +52,7 @@ export async function FinalCta({ title, body }: { title?: string; body?: string 
             <span aria-hidden className="h-px w-10 bg-gold/60" />
           </p>
           <h2 id="cta-title" className="mt-8 max-w-[16ch] text-mega font-light text-fg rtl:max-w-[20ch]">
-            <EditorialTitle text={title ?? t("title")} accent={2} />
+            <MaskText text={title ?? t("title")} accent={2} delay={0.1} />
           </h2>
           <p className="mt-8 max-w-xl text-lead text-fg/75">{body ?? t("body")}</p>
 

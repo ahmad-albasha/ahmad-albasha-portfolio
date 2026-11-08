@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ServiceGlyph } from "@/components/services/ServiceGlyph";
 import { ButtonLink } from "@/components/ui/Button";
+import { Parallax } from "@/components/ui/Parallax";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { MobileAction, Section, SectionHeading } from "@/components/ui/Section";
 import { services } from "@/data/services";
@@ -10,40 +11,45 @@ import { cn } from "@/lib/cn";
 import { localizeDigits } from "@/lib/i18n";
 
 /**
- * Each service gets its own composition inside a ruled editorial grid (no boxed cards):
- *  0 — wide, emerald-lit, emblem floating top-end, text settled at the bottom
- *  1 — narrow, emblem leading, text below
- *  2 — narrow, text leading, emblem anchored bottom-end
- *  3 — wide, emblem and text side by side
+ * Each service gets its own composition, colour of light and emblem scale inside a ruled editorial
+ * grid (no boxed cards). The emblem wrapper (`wrap`) owns placement and drift; `glyph` owns size and tone.
+ *  0 AI systems      — wide, permanently emerald-lit, a large living network floating top-end
+ *  1 Web             — narrow, dusty-blue light, emblem leading
+ *  2 Mobile          — narrow, warm light, text leading, emblem anchored bottom-end
+ *  3 Custom software — wide, champagne-lit, chip and text side by side, signals running out of the core
  */
 const compositions = [
   {
     span: "lg:col-span-7",
-    cell: "md:min-h-[34rem]",
-    glyph: "size-40 text-emerald-soft opacity-80 md:size-48 lg:absolute lg:end-12 lg:top-12 lg:size-80",
-    body: "mt-10 lg:mt-0",
-    light: "bg-[radial-gradient(ellipse_60%_60%_at_85%_20%,rgb(82_125_112/0.22),transparent_70%)] opacity-60",
+    cell: "md:min-h-[36rem]",
+    wrap: "lg:absolute lg:end-8 lg:top-10 xl:end-10",
+    glyph: "size-52 text-emerald-soft md:size-60 lg:size-56 xl:size-80",
+    body: "mt-12 lg:mt-0 lg:max-w-[48%]",
+    light: "bg-[radial-gradient(ellipse_60%_65%_at_80%_28%,rgb(82_125_112/0.26),transparent_70%)] opacity-80",
   },
   {
     span: "lg:col-span-5",
     cell: "",
-    glyph: "size-36 text-fg/55 md:size-44",
-    body: "mt-10",
-    light: "bg-[radial-gradient(ellipse_70%_60%_at_30%_25%,rgb(201_169_110/0.12),transparent_70%)] opacity-0",
+    wrap: "",
+    glyph: "size-44 text-cool/80 md:size-52",
+    body: "mt-12",
+    light: "bg-[radial-gradient(ellipse_70%_60%_at_30%_25%,rgb(117_137_181/0.14),transparent_70%)] opacity-40",
   },
   {
     span: "lg:col-span-5",
     cell: "",
-    glyph: "order-last mt-6 size-40 self-end text-fg/45 md:size-48 lg:absolute lg:-bottom-6 lg:end-4 lg:mt-0 lg:size-52",
-    body: "lg:pb-48",
-    light: "bg-[radial-gradient(ellipse_70%_60%_at_80%_85%,rgb(117_137_181/0.14),transparent_70%)] opacity-0",
+    wrap: "order-last mt-10 self-end lg:absolute lg:-bottom-4 lg:end-6 lg:mt-0",
+    glyph: "size-44 text-fg/60 md:size-52 lg:size-60",
+    body: "lg:pb-56",
+    light: "bg-[radial-gradient(ellipse_70%_60%_at_80%_85%,rgb(201_169_110/0.1),transparent_70%)] opacity-40",
   },
   {
     span: "lg:col-span-7",
-    cell: "lg:flex-row lg:items-center lg:gap-12",
-    glyph: "size-40 shrink-0 text-fg/55 lg:size-56",
-    body: "mt-10 lg:mt-0",
-    light: "bg-[radial-gradient(ellipse_50%_70%_at_15%_50%,rgb(201_169_110/0.12),transparent_70%)] opacity-0",
+    cell: "lg:flex-row lg:items-center lg:gap-16",
+    wrap: "shrink-0",
+    glyph: "size-48 text-gold-soft/70 md:size-56 lg:size-72",
+    body: "mt-12 lg:mt-0",
+    light: "bg-[radial-gradient(ellipse_50%_70%_at_18%_50%,rgb(201_169_110/0.16),transparent_70%)] opacity-70",
   },
 ];
 
@@ -56,7 +62,7 @@ export async function ServicesSection() {
   );
 
   return (
-    <Section id="services" labelledBy="services-title" wide className="overflow-x-clip">
+    <Section id="services" labelledBy="services-title" wide scene="cool" className="overflow-x-clip">
       <div aria-hidden className="light-pool end-[-12%] top-[30%] -z-10 size-[36rem] bg-cool/[0.06]" />
       <SectionHeading id="services-title" index={localizeDigits("02", locale)} eyebrow={t("eyebrow")} title={t("title")} intro={t("intro")} action={explore} accent={2} />
 
@@ -80,23 +86,27 @@ export async function ServicesSection() {
                 <span aria-hidden className={cn("absolute inset-0 -z-10 transition-opacity duration-700 ease-luxe group-hover:opacity-100", c.light)} />
                 <span aria-hidden className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-luxe group-hover:scale-x-100 rtl:origin-right" />
 
-                <ServiceGlyph
-                  name={service.icon}
-                  className={cn("transition-[transform,opacity] duration-700 ease-luxe group-hover:-translate-y-1 group-hover:opacity-100", c.glyph)}
-                />
+                <Parallax distance={18} className={cn("relative", c.wrap)}>
+                  <ServiceGlyph
+                    name={service.icon}
+                    className={cn("transition-[translate,scale] duration-[900ms] ease-luxe group-hover:-translate-y-1.5 group-hover:scale-[1.03]", c.glyph)}
+                  />
+                </Parallax>
 
                 <div className={cn("relative flex flex-1 flex-col", c.body)}>
-                  <div className="flex items-center justify-between gap-4 font-mono text-label uppercase rtl:font-sans">
-                    <span className="text-gold">{localizeDigits(String(i + 1).padStart(2, "0"), locale)}</span>
-                    <span className="text-muted/80">
+                  <div className="flex items-end justify-between gap-4 border-b border-line pb-4 font-mono text-label uppercase rtl:font-sans">
+                    <span aria-hidden className="numeral-outline text-[2.75rem]">
+                      {localizeDigits(String(i + 1).padStart(2, "0"), locale)}
+                    </span>
+                    <span className="pb-1 text-muted">
                       <span className="sr-only">{t("timeline")}: </span>
                       {service.timeline[locale]}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-[clamp(2.25rem,1.6rem+2vw,3.5rem)] leading-[0.95] font-light tracking-[-0.025em]">
+                  <h3 className="mt-6 text-[clamp(2.25rem,1.6rem+2vw,3.5rem)] leading-[0.95] font-light tracking-[-0.025em]">
                     {service.title[locale]}
                   </h3>
-                  <p className="mt-4 max-w-sm leading-[1.7]">{service.benefit[locale]}</p>
+                  <p className="mt-5 max-w-sm leading-[1.75] text-fg/70">{service.benefit[locale]}</p>
                   <span className="mt-8 flex items-center gap-3 text-sm text-gold md:mt-auto md:pt-8">
                     <span className="grid size-10 place-items-center rounded-full border border-gold/40 transition-all duration-500 ease-luxe group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
                       <ArrowRight aria-hidden className="flip-rtl size-4" />
