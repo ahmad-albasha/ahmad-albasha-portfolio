@@ -28,7 +28,6 @@ export function JsonLd({ locale }: { locale: Locale }) {
         name: `${site.name[locale]} — ${site.role[locale]}`,
         url: absoluteUrl(locale),
         founder: { "@id": personId },
-        areaServed: site.areaServed,
         availableLanguage: ["English", "Arabic"],
         email: site.contact.email,
         telephone: `+${site.contact.whatsapp}`,

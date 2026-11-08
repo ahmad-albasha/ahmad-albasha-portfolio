@@ -15,7 +15,6 @@ export const site = {
   location: { en: "Based in Lebanon · Working Remotely · Collaborating Globally", ar: "مقيم في لبنان · أعمل عن بُعد · أتعاون عالمياً" } satisfies Localized,
   /** Profile photo shown on the home and about pages and in structured data. */
   portrait: "/images/profile.jpg",
-  areaServed: ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Europe"],
 
   /** Cal.com link in the form "username/event-slug". Set NEXT_PUBLIC_CAL_LINK in your environment. */
   calLink: process.env.NEXT_PUBLIC_CAL_LINK ?? "",

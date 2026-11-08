@@ -7,6 +7,7 @@ import { ProcessSection } from "@/components/home/ProcessSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TrustStrip } from "@/components/home/TrustStrip";
+import { SceneLight } from "@/components/ui/SceneLight";
 import type { Locale } from "@/i18n/routing";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -15,6 +16,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <>
+      <SceneLight />
       <Hero />
       <TrustStrip />
       <FeaturedProjects />

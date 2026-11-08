@@ -4,7 +4,7 @@ import { BrandIcon, type Brand } from "@/components/icons/BrandIcons";
 import { site, whatsappHref } from "@/data/site";
 import { cn } from "@/lib/cn";
 
-/** WhatsApp first and prominent (preferred by Gulf clients), then smaller icon links. */
+/** WhatsApp first and prominent, then smaller icon links. */
 export async function ContactChannels({ className }: { className?: string }) {
   const [t, locale] = await Promise.all([getTranslations("channels"), getLocale()]);
 

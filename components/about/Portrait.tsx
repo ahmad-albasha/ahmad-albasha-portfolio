@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollZoom } from "@/components/ui/Cinematic";
 import { site } from "@/data/site";
 import { cn } from "@/lib/cn";
 
@@ -41,14 +42,20 @@ export function Portrait({
         )}
       >
         {src ? (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={priority}
-            sizes="(min-width: 1024px) 40vw, 100vw"
-            className={cn("object-cover object-[50%_20%]", arch && "brightness-[0.92] contrast-[1.05] saturate-[0.85]")}
-          />
+          arch ? (
+            <ScrollZoom>
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                priority={priority}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-[50%_20%] brightness-[0.94] contrast-[1.04] saturate-[0.9]"
+              />
+            </ScrollZoom>
+          ) : (
+            <Image src={src} alt={alt} fill priority={priority} sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-[50%_20%]" />
+          )
         ) : (
           <div aria-hidden className="absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_30%,rgb(201_169_110/0.18),transparent_70%)]" />
@@ -57,8 +64,18 @@ export function Portrait({
             </span>
           </div>
         )}
-        {/* Cinematic grade: warm top light, dark floor */}
-        {arch && <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgb(201_169_110/0.08),transparent_35%,transparent_60%,rgb(16_15_13/0.55))]" />}
+        {/*
+         * Cinematic grade, kept light so the person is never altered: a warm key from above, a faint
+         * emerald rim from the far side (soft-light, so skin tones stay natural), a soft vignette and a
+         * dark floor the caption can sit on.
+         */}
+        {arch && (
+          <>
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgb(201_169_110/0.08),transparent_35%,transparent_62%,rgb(16_15_13/0.6))]" />
+            <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_55%_70%_at_100%_45%,rgb(82_125_112/0.35),transparent_70%)] mix-blend-soft-light rtl:bg-[radial-gradient(ellipse_55%_70%_at_0%_45%,rgb(82_125_112/0.35),transparent_70%)]" />
+            <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_90%_80%_at_50%_40%,transparent_60%,rgb(0_0_0/0.35))]" />
+          </>
+        )}
         <span
           aria-hidden
           className={cn(
