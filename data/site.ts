@@ -12,7 +12,7 @@ export const site = {
 
   name: { en: "Ahmad Albasha", ar: "أحمد الباشا" } satisfies Localized,
   role: { en: "AI-focused Software Engineer", ar: "مهندس برمجيات متخصص في الذكاء الاصطناعي" } satisfies Localized,
-  location: { en: "Remote · Serving the Gulf & Europe", ar: "عن بُعد · أخدم الخليج وأوروبا" } satisfies Localized,
+  location: { en: "Based in Lebanon · Working Remotely · Collaborating Globally", ar: "مقيم في لبنان · أعمل عن بُعد · أتعاون عالمياً" } satisfies Localized,
   /** Profile photo shown on the home and about pages and in structured data. */
   portrait: "/images/profile.jpg",
   areaServed: ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Europe"],
